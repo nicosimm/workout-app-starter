@@ -8,6 +8,7 @@ const cors = require('cors')
 // express app
 const app = express()
 app.use(cors())
+
 // middleware
 app.use(express.json())
 
@@ -30,3 +31,4 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((error) => {
     console.log(error)
   })
+

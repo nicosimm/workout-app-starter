@@ -3,17 +3,25 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
-  --error: #e7195a;
+  --primary: #f24100; /* Deep blue for night sky */
+  --accent: #facc15;  /* Warm yellow for stars */
+  --background: #0f172a; /* Dark blue background */
+  --text: #e2e8f0;    /* Light grayish text for readability */
+  --error: #e11d48;   /* Slightly darker red for errors */
 }
+
 body {
-  background: #f1f1f1;
+  background: var(--background);
   margin: 0;
   font-family: "Poppins";
+  color: var(--text);
 }
+
 header {
-  background: #fff;
+  background: var(--primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -22,11 +30,14 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
-  color: #333;
+  color: var(--accent);
   text-decoration: none;
+  margin-left: 20px;
 }
-.pages{
+
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
@@ -38,65 +49,75 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
+
 .workout-details {
-  background: #fff;
-  border-radius: 4px;
+  background: #1e293b; /* Darker card background */
+  border-radius: 8px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
+
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: var(--primary);
+  color: var(--accent);
 }
+
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
-  color: #555;
+  color: var(--text);
 }
+
 .workout-details span {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background: var(--primary);
   padding: 6px;
   border-radius: 50%;
-  color: #333;
+  color: var(--accent);
 }
 
 /* new workout form */
 label, input {
   display: block;
 }
+
 input {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: var(--text);
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 form button {
-  background: var(--primary);
+  background: var(--accent);
   border: 0;
-  color: #fff;
-  padding: 10px;
+  color: #1e293b;
+  padding: 15px;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
 }
+
 div.error {
   padding: 10px;
-  background: #ffefef;
+  background: #2f1b1d;
   border: 1px solid var(--error);
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
 }
+
 input.error {
   border: 1px solid var(--error);
 }
