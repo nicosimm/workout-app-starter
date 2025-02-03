@@ -11,8 +11,13 @@ export const useSignup = () => {
     setError(null);
 
     const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/workouts`
-      )
+      `${process.env.REACT_APP_API_URL}/api/user/signup`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      }
+    );
 
     const json = await response.json();
 
@@ -21,7 +26,7 @@ export const useSignup = () => {
       setError(json.error);
     } else {
       localStorage.setItem('user', JSON.stringify(json));
-      dispatch({ type: 'LOGIN', payload: json });
+      dispatch({ type: 'LOGIN', payload: json.user });
       setIsLoading(false);
     }
   };

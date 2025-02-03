@@ -3,11 +3,11 @@
 
 /* layout */
 :root {
-  --primary: #f24100; /* Deep blue for night sky */
-  --accent: #facc15;  /* Warm yellow for stars */
-  --background: #0f172a; /* Dark blue background */
-  --text: #e2e8f0;    /* Light grayish text for readability */
-  --error: #e11d48;   /* Slightly darker red for errors */
+  --primary: #f24100; 
+  --accent: #facc15; 
+  --background: #0f172a; 
+  --text: #e2e8f0;   
+  --error: #e11d48;  
 }
 
 body {
@@ -120,4 +120,104 @@ div.error {
 
 input.error {
   border: 1px solid var(--error);
+}
+
+/* Style for the delete icon ('x') */
+.delete-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: red;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  transition: color 0.2s;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}
+
+/* Style for the "Edit Workout" button */
+.edit-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #f24100; /* Adjust this color to match your website's theme */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.edit-btn:hover {
+  background-color: #ae2e00; /* Darker shade for hover effect */
+}
+
+/* Style for Save and Cancel buttons */
+form button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Adds space between the buttons */
+}
+
+form button[type="submit"] {
+  background-color: #28a745; /* Green background for Save */
+  color: white;
+  border: none;
+}
+
+form button[type="button"] {
+  background-color: #dc3545; /* Red background for Cancel */
+  color: white;
+  border: none;
+}
+
+form button:hover {
+  opacity: 0.8; /* Slightly transparent on hover */
+}
+
+/* Style for the container of user email and logout button */
+nav div {
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for the email text */
+nav span {
+  margin-right: 10px; /* Space between the email and the logout button */
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Style for the logout button */
+nav button {
+  padding: 8px 16px;
+  background-color: #facc15; /* Blue background to match overall scheme */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+nav button:hover {
+  background-color: #d5aa00; /* Darker blue on hover */
+  opacity: 0.8; /* Slight transparency on hover */
+}
+
+/* For links to Login and Signup */
+nav a {
+  margin-left: 10px;
+  color: #facc15;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }

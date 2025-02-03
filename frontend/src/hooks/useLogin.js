@@ -11,8 +11,13 @@ export const useLogin = () => {
     setError(null);
 
     const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/workouts`
-      )
+      `${process.env.REACT_APP_API_URL}/api/user/login`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      }
+    );
 
     const json = await response.json();
 
@@ -20,9 +25,14 @@ export const useLogin = () => {
       setIsLoading(false);
       setError(json.error);
     } else {
+      // Store user info in local storage
       localStorage.setItem('user', JSON.stringify(json));
+
+      // Update authentication context
       dispatch({ type: 'LOGIN', payload: json });
+
       setIsLoading(false);
+      // No need for navigation - Home.js will render automatically
     }
   };
 

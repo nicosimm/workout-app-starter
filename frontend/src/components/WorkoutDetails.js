@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthenticationContext } from '../hooks/useAuthenticationContext';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
-  const { user } = useAuthContext();
+  const { user } = useAuthenticationContext();
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(workout.title);
   const [load, setLoad] = useState(workout.load);
@@ -56,36 +56,35 @@ const WorkoutDetails = ({ workout }) => {
 
   return (
     <div className="workout-details">
-      {isEditing ? (
-        <form onSubmit={handleEdit}>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            type="number"
-            value={load}
-            onChange={(e) => setLoad(e.target.value)}
-          />
-          <input
-            type="number"
-            value={reps}
-            onChange={(e) => setReps(e.target.value)}
-          />
-          <button type="submit">Save</button>
-          <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
-        </form>
-      ) : (
-        <>
-          <h4>{workout.title}</h4>
-          <p><strong>Load (kg): </strong>{workout.load}</p>
-          <p><strong>Reps: </strong>{workout.reps}</p>
-          <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
-          <span className="material-symbols-outlined" onClick={handleClick}>🗑️</span>
-          <button onClick={() => setIsEditing(true)}>Edit Workout ✏️</button>
-        </>
-      )}
+     {isEditing ? (
+  <form onSubmit={handleEdit}>
+    <input
+      type="text"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+    />
+    <input
+      type="number"
+      value={load}
+      onChange={(e) => setLoad(e.target.value)}
+    />
+    <input
+      type="number"
+      value={reps}
+      onChange={(e) => setReps(e.target.value)}
+    />
+    <button type="submit">Save</button>
+    <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
+  </form>
+) : (
+  <>
+    <h4>{workout.title}</h4>
+    <p><strong>Load (kg): </strong>{workout.load}</p>
+    <p><strong>Reps: </strong>{workout.reps}</p>
+    <span className="delete-icon" onClick={handleClick}>×</span>
+    <button className="edit-btn" onClick={() => setIsEditing(true)}>Edit Workout ✏️</button>
+  </>
+)}
     </div>
   );
 };
