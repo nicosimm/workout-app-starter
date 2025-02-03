@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
-import { useAuthenticationContext } from '../hooks/useAuthenticationContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
-  const { user } = useAuthenticationContext();
+  const { user } = useAuthContext();
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(workout.title);
   const [load, setLoad] = useState(workout.load);
@@ -38,8 +38,14 @@ const WorkoutDetails = ({ workout }) => {
 
     const updatedWorkout = { title, load, reps };
 
-    const response = await fetch(`$(process.env.REACT_APP_API_URL)/api/workouts/${workout._id}`);
-
+    const response = await fetch('/api/workouts/' + workout._id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      },
+      body: JSON.stringify(updatedWorkout)
+    });
     const json = await response.json();
 
     if (response.ok) {
